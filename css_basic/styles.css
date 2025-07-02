@@ -13,3 +13,27 @@ flex: 1;
 overflow-y: auto;
 }
 
+nav {
+background-color: aqua;
+}
+
+li {
+    text-align: right;
+    text-decoration-color: chocolate;
+    text-decoration-style: dashed;
+    
+}
+
+h1{
+text-decoration-line: underline;
+}
+
+p{
+text-decoration: italic;
+}
+footer{
+    background-color: aqua;
+    text-align: right;
+}
+
+
