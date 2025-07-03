@@ -1,0 +1,570 @@
+/* General Body and HTML Resets */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif; /* Using Inter as a common modern sans-serif font */
+    color: #333; /* Default text color */
+    line-height: 1.6;
+    background-color: #f8f8f8; /* Light background for general sections */
+}
+
+/* Ensure images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Removes extra space below images */
+}
+
+/* Box-sizing for easier layout calculations */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+header {
+    /* Updated background image to match the new picture */
+    background-image: url('images/Object.png'); /* Darker blue/purple tone */
+    background-size: cover;
+    background-position: center;
+    color: #fff; /* White text for header content */
+    padding: 20px 0;
+    position: relative; /* Needed for overlay */
+    min-height: 800px; /* Adjusted height to accommodate the layout in the new image */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes nav to top, hero content to middle */
+    align-items: center; /* Center horizontally */
+}
+
+/* Overlay for the header background image - made slightly less opaque */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Slightly lighter dark overlay */
+    z-index: 1; /* Ensure overlay is above background but below content */
+}
+
+header > * {
+    position: relative; /* Bring content above the overlay */
+    z-index: 2;
+}
+
+/* Navigation Styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%; /* Horizontal padding */
+    max-width: 1200px; /* Max width for content */
+    margin: 0 auto; /* Center the nav */
+    width: 100%;
+}
+
+nav img {
+    width: 100px; /* Adjust logo size */
+    height: auto;
+    border-radius: 0; /* Logo is not rounded in the new image */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Space between nav items */
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Hero Section (First section in main, now part of header visually) */
+/* The HTML structure has the hero content inside the first section of main,
+   but visually it's part of the header background. We'll adjust its positioning
+   and styling to reflect that. */
+main section:first-of-type {
+    background-color: transparent; /* Ensure no background interferes */
+    padding: 0; /* Remove padding from section itself */
+    position: absolute; /* Position relative to header */
+    top: 50%; /* Center vertically within the header */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 1200px; /* Constrain width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2; /* Keep it above the overlay */
+}
+
+main section:first-of-type > div:first-of-type {
+    text-align: center;
+    padding: 50px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #fff;
+    flex-grow: 0; /* No longer needs to grow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main section:first-of-type > div:first-of-type h1 {
+    font-size: 3.5em; /* Large heading */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+main section:first-of-type > div:first-of-type span {
+    display: inline-block; /* Allows spacing between words */
+    margin: 0 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+main section:first-of-type > div:first-of-type button {
+    background-color: #9c27b0; /* Purple button */
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px; /* Rounded button */
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+main section:first-of-type > div:first-of-type button:hover {
+    background-color: #7b1fa2; /* Darker purple on hover */
+    transform: translateY(-2px);
+}
+
+/* "Learn from the pros" Section - now visually distinct and below the main header area */
+/* This section is now the second div within the first section of main,
+   and it has a different background and positioning. */
+main section:first-of-type > div:last-of-type {
+    background-color: #000033; /* Dark blue background as per new image */
+    padding: 50px 20px;
+    text-align: center;
+    color: #fff; /* White text for this section */
+    position: absolute; /* Position it at the bottom of the header */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2; /* Keep it above the overlay */
+}
+
+main section:first-of-type > div:last-of-type h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #fff; /* White heading */
+}
+
+main section:first-of-type > div:last-of-type > div {
+    display: flex;
+    justify-content: center; /* Center the cards */
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    gap: 30px; /* Space between cards */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main section:first-of-type > div:last-of-type > div > div {
+    flex: 1 1 200px; /* Allows cards to grow/shrink, min width 200px */
+    max-width: 250px; /* Max width for individual cards */
+    text-align: center;
+    background-color: transparent; /* No background for individual cards */
+    padding: 0; /* No padding for individual cards */
+    border-radius: 0; /* No border radius */
+    box-shadow: none; /* No box shadow */
+}
+
+main section:first-of-type > div:last-of-type > div > div img {
+    width: 150px; /* Size of instructor images */
+    height: 150px;
+    border-radius: 50%; /* Make images circular */
+    object-fit: cover; /* Ensure images fill the circle */
+    margin-bottom: 15px;
+    border: none; /* No border around instructor images in the new image */
+}
+
+main section:first-of-type > div:last-of-type > div > div h3 {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    color: #fff; /* White text */
+}
+
+main section:first-of-type > div:last-of-type > div > div p {
+    font-size: 0.9em;
+    color: #ccc; /* Lighter grey for description */
+}
+
+/* Testimonial Section - now visually distinct with a purple background */
+main section:nth-of-type(2) {
+    background-color: #9c27b0; /* Purple background from the image */
+    color: #fff;
+    padding: 80px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+}
+
+main section:nth-of-type(2) > div:first-of-type img {
+    width: 200px; /* Size of testimonial image */
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #fff;
+}
+
+main section:nth-of-type(2) > div:last-of-type {
+    max-width: 600px;
+}
+
+main section:nth-of-type(2) blockquote {
+    font-size: 1.5em;
+    font-style: italic;
+    margin: 0 0 20px 0;
+    line-height: 1.4;
+}
+
+main section:nth-of-type(2) h3 {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+main section:nth-of-type(2) p {
+    font-size: 1em;
+    opacity: 0.8;
+}
+
+/* Most Popular Tutorials Section */
+main section:nth-of-type(3) {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+main section:nth-of-type(3) h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+main section:nth-of-type(3) > div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main section:nth-of-type(3) > div > div {
+    flex: 1 1 250px; /* Allows cards to grow/shrink, min width 250px */
+    max-width: 280px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: left; /* Align text within card to left */
+}
+
+main section:nth-of-type(3) > div > div img:first-of-type {
+    width: 100%; /* Tutorial thumbnail */
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+main section:nth-of-type(3) > div > div h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+main section:nth-of-type(3) > div > div p:first-of-type {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+main section:nth-of-type(3) > div > div > div:nth-of-type(2) { /* Instructor profile within tutorial card */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+main section:nth-of-type(3) > div > div > div:nth-of-type(2) img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+    border: 2px solid #9c27b0;
+}
+
+main section:nth-of-type(3) > div > div > div:nth-of-type(2) h4 {
+    font-size: 1em;
+    color: #333;
+    margin: 0;
+}
+
+main section:nth-of-type(3) > div > div > div:nth-of-type(3) { /* Star rating div */
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+main section:nth-of-type(3) > div > div > div:nth-of-type(3) i {
+    color: #FFD700; /* Gold color for stars */
+    font-size: 1em;
+}
+
+main section:nth-of-type(3) > div > div p:last-of-type {
+    font-size: 0.8em;
+    color: #999;
+    text-align: right; /* Align duration to the right */
+}
+
+/* Free Membership Section */
+main section:nth-of-type(4) {
+    background-color: #000033; /* Dark blue background as per new image */
+    color: #fff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+main section:nth-of-type(4) h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+main section:nth-of-type(4) > div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 40px auto;
+}
+
+main section:nth-of-type(4) > div > div {
+    flex: 1 1 200px;
+    max-width: 250px;
+    padding: 20px;
+}
+
+main section:nth-of-type(4) > div > div img {
+    width: 80px; /* Size of smile icons */
+    height: 80px;
+    margin: 0 auto 15px auto;
+}
+
+main section:nth-of-type(4) > div > div h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+main section:nth-of-type(4) > div > div p {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+main section:nth-of-type(4) button {
+    background-color: #9c27b0; /* Purple button */
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+main section:nth-of-type(4) button:hover {
+    background-color: #7b1fa2;
+    transform: translateY(-2px);
+}
+
+/* F.A.Q Section */
+main section:nth-of-type(5) {
+    padding: 80px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+main section:nth-of-type(5) h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+main section:nth-of-type(5) > div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px; /* Space between FAQ columns */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main section:nth-of-type(5) > div > div {
+    flex: 1 1 45%; /* Two columns for FAQs */
+    max-width: 550px;
+    text-align: left;
+}
+
+main section:nth-of-type(5) > div > div > div:nth-of-type(odd) h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+main section:nth-of-type(5) > div > div > div:nth-of-type(even) {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333; /* Dark footer background */
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+footer section {
+    display: flex;
+    flex-direction: column; /* Keep column for logo/socials row and copyright */
+    align-items: center; /* Center the column content */
+    gap: 20px; /* Gap between the logo/socials row and copyright */
+    width: 100%; /* Ensure section spans full width */
+    max-width: 1200px; /* Max width for content */
+    margin: 0 auto; /* Center the section */
+}
+
+/* Container for logo and social icons */
+footer section > div:first-of-type {
+    display: flex;
+    justify-content: space-between; /* Pushes logo to left, socials to right */
+    align-items: center;
+    width: 100%; /* Ensure this div spans the full width of its parent section */
+    padding: 0 20px; /* Add some horizontal padding for spacing from edges */
+}
+
+footer img {
+    width: 80px; /* Footer logo size */
+    height: auto;
+    border-radius: 0; /* Footer logo is not rounded in the new image */
+}
+
+footer > section > div:last-of-type { /* Social icons container */
+    display: flex;
+    gap: 20px;
+    font-size: 1.5em;
+}
+
+footer i {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+footer i:hover {
+    color: #9c27b0; /* Hover color for social icons */
+}
+
+footer p {
+    font-size: 0.9em;
+    opacity: 0.7;
+    margin-top: 20px; /* Space above copyright */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    main section:first-of-type > div:first-of-type h1 {
+        font-size: 2.5em;
+    }
+
+    main section:first-of-type > div:first-of-type span {
+        margin: 0 5px;
+        font-size: 1em;
+    }
+
+    /* Adjust positioning for smaller screens */
+    main section:first-of-type {
+        position: static; /* Remove absolute positioning */
+        transform: none; /* Remove transform */
+        padding-top: 50px; /* Add some top padding */
+    }
+
+    main section:first-of-type > div:last-of-type {
+        position: static; /* Remove absolute positioning */
+        margin-top: 50px; /* Add space between hero and pros section */
+    }
+
+    main section:nth-of-type(2) {
+        flex-direction: column;
+    }
+
+    main section:nth-of-type(5) > div > div {
+        flex: 1 1 90%; /* Single column for FAQs on small screens */
+    }
+
+    /* Footer adjustments for smaller screens */
+    footer section > div:first-of-type {
+        flex-direction: column; /* Stack logo and socials vertically */
+        gap: 20px; /* Space between stacked items */
+        padding: 0; /* Remove horizontal padding */
+    }
+}
+
+@media (max-width: 480px) {
+    main section:first-of-type > div:first-of-type h1 {
+        font-size: 2em;
+    }
+
+    main section:first-of-type > div:last-of-type > div > div,
+    main section:nth-of-type(3) > div > div,
+    main section:nth-of-type(4) > div > div {
+        flex: 1 1 100%; /* Stack all cards/items on very small screens */
+        max-width: 300px; /* Limit max width for better readability */
+    }
+}
